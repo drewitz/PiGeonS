@@ -5,5 +5,5 @@ CXXFLAGS = -I/home/drewitzs/install/include
 run: glugon
 	./glugon
 
-glugon: glugon.o geod.cpp
+glugon: geod.o glugon.o
 	$(CXX) -o glugon glugon.o $(LDFLAGS)
