@@ -1,6 +1,6 @@
 /* tested with glucat-0.8.2     2017-01-20 */
 
-#include "geod.cpp"
+#include "geod.h"
 
 #include "cmath"
 

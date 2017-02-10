@@ -6,4 +6,4 @@ run: glugon
 	./glugon
 
 glugon: geod.o glugon.o
-	$(CXX) -o glugon glugon.o $(LDFLAGS)
+	$(CXX) -o glugon glugon.o geod.o $(LDFLAGS)
