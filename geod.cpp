@@ -3,6 +3,8 @@
  */
 
 #include "geod.h"
+#include "crossratio.h"
+
 #include "iostream"
 
 using namespace std;
@@ -126,4 +128,13 @@ ostream& operator<<(ostream& os, const Geod& g){
 		os << g.start << " -- " << g.end;
 	}
 	return os;
+}
+
+clif Geod::double_bridge_cross_ratio(Geod a, Geod b){
+	/* calculates the cross ratio of the double bridge
+	 * a, self, b
+	 */
+	// TODO CHECKTHIS!!!
+	// TODO take care of infinity...
+	return crossratio(end, start, a.end, b.end);
 }

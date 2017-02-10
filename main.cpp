@@ -25,5 +25,7 @@ int main(){
 
 	cout << endl;
 	p.check_intersections();
+	cout << endl << endl;
+	p.print_cross_ratios();
 	cout << endl;
 }

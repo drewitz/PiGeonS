@@ -123,6 +123,8 @@ Pentagon::Pentagon(vector<clif> s){
 
         /* now S4 is the common perpendicular to S0 and S3 */
 	sides.push_back(get_last(sides.back()));
+
+	cross_ratios = get_cross_ratios();
 }
 
 ostream& operator<<(ostream& os, const Pentagon& p){
@@ -148,4 +150,30 @@ void Pentagon::check_intersections(){
 	cout << S_last.get_intersection(S_second_last);
 	cout << endl;
 	cout << S_second_last.get_intersection(S_third_last);
+}
+
+vector<clif> Pentagon::get_cross_ratios(){
+	vector<clif> qs;
+	qs.reserve(n_sides);
+
+	/* TODO also check formula here... */
+	// TODO take care of infinity...
+	qs.push_back((clif(1) - sides.back().end)/(-clif(1) - sides.back().end));
+	qs.push_back(sides[2].end);
+	qs.push_back((sides[2].end - sides[3].end).inv() * (sides[2].start - sides[3].end));
+	
+	for (int i = 3; i < n_sides - 1; i++) {
+		qs.push_back(sides[i].double_bridge_cross_ratio(sides[i-1], sides[i+1]));
+	}
+
+	qs.push_back(sides.back().double_bridge_cross_ratio(sides[n_sides-2], sides[0]));
+	return qs;
+}
+
+void Pentagon::print_cross_ratios(){
+	int i = 0;
+	for (clif q : cross_ratios) {
+		cout << "q" << i << " = " << q << endl;
+		i++;
+	}
 }

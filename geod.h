@@ -24,6 +24,7 @@ class Geod{
 	 * [an additional mechanism could be implemented to make   ]
 	 * [the opposite direction possible. e.g.:                 ]
 	 * [self.orientation = +/- 1                               ]
+	 * TODO you should really implement the infty properly...
 	 */
 	public:
 		clif start;
@@ -33,6 +34,8 @@ class Geod{
 		bool check_one();
 		clif get_intersection_with_s0();
 		clif get_intersection(Geod g);
+		clif double_bridge_cross_ratio(Geod a, Geod b);
+
 		friend ostream& operator<<(ostream& os, const Geod& g);
 };
 

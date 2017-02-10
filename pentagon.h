@@ -17,8 +17,12 @@ class Pentagon{
 		int n_sides; // number of sides
 
 		vector<Geod> sides; // vector of sides
+		vector<clif> cross_ratios;
+
 		Pentagon(vector<clif> s);
 		void check_intersections();
+		vector<clif> get_cross_ratios();
+		void print_cross_ratios();
 
 		// friends
 		friend clif my_sqrt(clif x);
