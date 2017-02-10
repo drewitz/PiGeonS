@@ -13,6 +13,7 @@
 #include "tuning.h"
 #include "glucat/glucat_imp.h"
 
+using namespace std;
 typedef glucat::matrix_multi<double> clif;
 
 class Geod{
@@ -32,7 +33,7 @@ class Geod{
 		bool check_one();
 		clif get_intersection_with_s0();
 		clif get_intersection(Geod g);
-		friend std::ostream& operator<<(std::ostream& os, const Geod& g);
+		friend ostream& operator<<(ostream& os, const Geod& g);
 };
 
 #endif // GEOD_H_INCLUDED

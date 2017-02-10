@@ -3,6 +3,9 @@
  */
 
 #include "geod.h"
+#include "iostream"
+
+using namespace std;
 
 bool is_small(double x){
 	/* this is pretty fucked up... */
@@ -27,8 +30,8 @@ clif Geod::get_intersection_with_s0() {
 		if(direction[-2] != 0){
 			i = -2;
 		} else {
-			std::cout << std::endl
-				  << "Noe geht nicht" << std::endl;
+			cout << endl
+			     << "Noe geht nicht" << endl;
 		}
 	}
 
@@ -66,7 +69,7 @@ clif Geod::get_intersection(Geod g) {
 	int j = -1;
 	double a,b,c,d;
 	while (j >= dimMax){
-		//std::cout << std::endl << "i = " << i << "  and j = " << j << std::endl;
+		//cout << endl << "i = " << i << "  and j = " << j << endl;
 		/* matrix as
 		 * [ a  b ]
 		 * [ c  d ]
@@ -86,7 +89,7 @@ clif Geod::get_intersection(Geod g) {
 			j--;
 		}
 	};
-	if (not found) {std::cout << "wtf";}
+	if (not found) {cout << "wtf";}
 
 	double t;
 	t = (d * v[i] - b * v[j])/(a*d-b*c);
@@ -110,13 +113,13 @@ bool Geod::check_one() {
 	if(temp == temp[0]) {
 		return temp[0] < 0 ;
 	} else {
-		std::cout << "check yourself ? " << start << " to " << end
-			  << std::endl;
+		cout << "check yourself ? " << start << " to " << end
+		     << endl;
 		return false;
 	}
 }
 
-std::ostream& operator<<(std::ostream& os, const Geod& g){
+ostream& operator<<(ostream& os, const Geod& g){
 	if(g.start == g.end){
 		os << g.start << " -- infty";
 	} else {

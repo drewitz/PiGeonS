@@ -2,25 +2,27 @@
 
 #include "pentagon.h"
 
+using namespace std;
+
 int main(){
-	std::cout << "########## Calculate a Pentagon ##########" << std::endl
-		  << "not very elaborately..." << std::endl
-	          << std::endl;
+	cout << "########## Calculate a Pentagon ##########" << endl
+		  << "not very elaborately..." << endl
+	          << endl;
 
 	clif q1("1+{-1}");
 	clif q2("1+{-2}");
 
-	std::cout << "Using the parameters:" << std::endl
-		  << "    q1 = " << q1 << std::endl
-		  << "    q2 = " << q2 << std::endl
-	          << std::endl;
+	cout << "Using the parameters:" << endl
+	     << "    q1 = " << q1 << endl
+	     << "    q2 = " << q2 << endl
+	     << endl;
 
 	Pentagon p(q1, q2);
         
 
-        std::cout << "geodesics of the pentagon:" << std::endl << p;
+        cout << "geodesics of the pentagon:" << endl << p;
 
-	std::cout << std::endl;
+	cout << endl;
 	p.check_intersections();
-	std::cout << std::endl;
+	cout << endl;
 }
