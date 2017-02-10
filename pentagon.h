@@ -17,7 +17,7 @@ class Pentagon{
 		int n_sides; // number of sides
 
 		vector<Geod> sides; // vector of sides
-		Pentagon(clif q1, clif q2);
+		Pentagon(vector<clif> s);
 		void check_intersections();
 
 		// friends

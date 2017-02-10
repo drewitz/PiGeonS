@@ -109,9 +109,9 @@ Geod get_last(Geod g){
 	return Geod(psi_inv(g.end, temp), psi_inv(g.end, -temp));
 }
 
-Pentagon::Pentagon(clif q1, clif q2){
+Pentagon::Pentagon(vector<clif> s){
 	/* "metadata-stuff" */
-	n_sides = 5;
+	n_sides = s.size() + 3;
 	sides.reserve(n_sides);
 
         /* starting geodesics */
@@ -119,10 +119,10 @@ Pentagon::Pentagon(clif q1, clif q2){
 	sides.push_back(Geod(0,0)); 
 
         /* first calculated geodesic */
-	sides.push_back(Geod(-q1, q1));
+	sides.push_back(Geod(-s[0], s[0]));
 
         /* second calculated geodesic */
-	sides.push_back(Geod(phi(q1,-q2), phi(q1, q2)));
+	sides.push_back(Geod(phi(s[0],-s[1]), phi(s[0], s[1])));
 
         /* now S4 is the common perpendicular to S0 and S3 */
 	sides.push_back(get_last(sides.back()));

@@ -17,7 +17,8 @@ int main(){
 	     << "    q2 = " << q2 << endl
 	     << endl;
 
-	Pentagon p(q1, q2);
+	vector<clif> s {q1, q2};
+	Pentagon p(s);
         
 
         cout << "geodesics of the pentagon:" << endl << p;
