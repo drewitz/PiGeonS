@@ -1,4 +1,4 @@
-#include "pentagon.h"
+#include "polygon.h"
 #include "crossratio.h"
 
 #include "cmath"
@@ -106,7 +106,7 @@ Geod get_last(Geod g){
 	return Geod(psi_inv(g.end, temp), psi_inv(g.end, -temp));
 }
 
-Pentagon::Pentagon(vector<clif> s){
+Polygon::Polygon(vector<clif> s){
 	/* "metadata-stuff" */
 	n_sides = s.size() + 3;
 	sides.reserve(n_sides);
@@ -119,7 +119,16 @@ Pentagon::Pentagon(vector<clif> s){
 	sides.push_back(Geod(-s[0], s[0]));
 
         /* second calculated geodesic */
-	sides.push_back(Geod(phi(s[0],-s[1]), phi(s[0], s[1])));
+	clif t_start, t_end; // temporary intermediate values
+	for (int i = 1; i < s.size(); i++){
+		t_start = -s[i];
+		t_end = s[i];
+		for (int j = 0; j < i; j++){
+			t_start = phi(s[j], t_start);
+			t_end = phi(s[j], t_end);
+		}
+		sides.push_back(Geod(t_start, t_end));
+	}
 
         /* now S4 is the common perpendicular to S0 and S3 */
 	sides.push_back(get_last(sides.back()));
@@ -127,7 +136,7 @@ Pentagon::Pentagon(vector<clif> s){
 	cross_ratios = get_cross_ratios();
 }
 
-ostream& operator<<(ostream& os, const Pentagon& p){
+ostream& operator<<(ostream& os, const Polygon& p){
 	int i = -1;
 	for (Geod g : p.sides) {
 		i++;
@@ -137,7 +146,7 @@ ostream& operator<<(ostream& os, const Pentagon& p){
 	return os;
 }
 
-void Pentagon::check_intersections(){
+void Polygon::check_intersections(){
 	Geod S0, S_third_last, S_second_last, S_last;
 	S0 = sides.at(0);
 	S_third_last = sides.at(n_sides-3);
@@ -152,7 +161,7 @@ void Pentagon::check_intersections(){
 	cout << S_second_last.get_intersection(S_third_last);
 }
 
-vector<clif> Pentagon::get_cross_ratios(){
+vector<clif> Polygon::get_cross_ratios(){
 	vector<clif> qs;
 	qs.reserve(n_sides);
 
@@ -170,7 +179,7 @@ vector<clif> Pentagon::get_cross_ratios(){
 	return qs;
 }
 
-void Pentagon::print_cross_ratios(){
+void Polygon::print_cross_ratios(){
 	int i = 0;
 	for (clif q : cross_ratios) {
 		cout << "q" << i << " = " << q << endl;
