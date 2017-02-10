@@ -1,4 +1,5 @@
 #include "pentagon.h"
+#include "crossratio.h"
 
 #include "cmath"
 #include "iostream"
@@ -12,10 +13,6 @@ clif my_sqrt(clif x){
         my_root = (x + glucat::abs(x));
         my_root /= sqrt(2*(x[0] + glucat::abs(x)));
         return my_root;
-}
-
-clif crossratio(clif a, clif b, clif c, clif d){
-        return (a-c) * (a-d).inv() * (b-d) * (b-c).inv();
 }
 
 clif phi(clif q, clif x){
