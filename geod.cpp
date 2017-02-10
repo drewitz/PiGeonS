@@ -9,6 +9,8 @@ bool is_small(double x){
 	return abs(x) < 0.1;
 }
 
+Geod::Geod(){}
+
 Geod::Geod(clif a, clif b){
 	start = a;
 	end = b;

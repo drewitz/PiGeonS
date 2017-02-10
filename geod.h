@@ -27,6 +27,7 @@ class Geod{
 	public:
 		clif start;
 		clif end;
+		Geod(); // needed to create array of geodesics
 		Geod(clif a, clif b);
 		bool check_one();
 		clif get_intersection_with_s0();
