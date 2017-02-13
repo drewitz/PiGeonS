@@ -9,21 +9,26 @@ int main(){
 	     << "not very elaborately..." << endl
 	     << endl;
 
-	clif q1("1+{-1}");
-	clif q2("1+{-2}");
-	clif q3("1+{-3}");
+	// initialise parameters
+	vector<clif> s {
+		clif("2{-1}"),
+		clif("2{-2}")
+	};
 
-	cout << "Using the parameters:" << endl
-	     << "    q1 = " << q1 << endl
-	     << "    q2 = " << q2 << endl
-	     << "    q3 = " << q3 << endl
-	     << endl;
+	// print parameters
+	cout << "Using the parameters:" << endl;
+	int i = 0;
+	for (clif q : s) {
+		i++;
+		cout << "    q" << i << " = " << q << endl;
+	}
+	cout << endl;
 
-	vector<clif> s {q1, q2, q3};
+	// calculate polygon
 	Polygon p(s);
-        
 
-	cout << "geodesics of the pentagon:" << endl << p;
+	// print polygon
+	cout << "geodesics of the polygon:" << endl << p;
 
 	cout << endl;
 	p.check_intersections();
