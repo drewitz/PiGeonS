@@ -9,94 +9,94 @@
 using namespace std;
 
 clif my_sqrt(clif x){
-        clif my_root;
-        my_root = (x + glucat::abs(x));
-        my_root /= sqrt(2*(x[0] + glucat::abs(x)));
-        return my_root;
+	clif my_root;
+	my_root = (x + glucat::abs(x));
+	my_root /= sqrt(2*(x[0] + glucat::abs(x)));
+	return my_root;
 }
 
 clif phi(clif q, clif x){
-        /* Isometry phi_q of the form
-         * x |---> sqrt(-q) * (1+x) * (1-x)^-1 * sqrt(-q)
-         *
-         *  -1 |---> 0
-         *   1 |---> inf
-         *   0 |---> -q
-         * inf |--->  q
-         */
-        clif root;
-        //root = glucat::sqrt(-q);
-        root = my_sqrt(-q);
+	/* Isometry phi_q of the form
+	 * x |---> sqrt(-q) * (1+x) * (1-x)^-1 * sqrt(-q)
+	 *
+	 *  -1 |---> 0
+	 *   1 |---> inf
+	 *   0 |---> -q
+	 * inf |--->  q
+	 */
+	clif root;
+	//root = glucat::sqrt(-q);
+	root = my_sqrt(-q);
 
-        /* check the sqrt with our definition */
-        if(CHECK){
-                clif my_root;
-                my_root = (-q + glucat::abs(q)); 
-                my_root /= sqrt(2*(-q[0] + glucat::abs(q)));
+	/* check the sqrt with our definition */
+	if(CHECK){
+		clif my_root;
+		my_root = (-q + glucat::abs(q)); 
+		my_root /= sqrt(2*(-q[0] + glucat::abs(q)));
 
-                cout << endl;
-                cout << "### Check ---> "
-                     << root << " == " << my_root << " ???" << endl;
-                cout << endl;
-        }
+		cout << endl;
+		cout << "### Check ---> "
+		     << root << " == " << my_root << " ???" << endl;
+		cout << endl;
+	}
 
-        clif one(1);
-        return root * (one + x) * (one - x).inv() * root;
+	clif one(1);
+	return root * (one + x) * (one - x).inv() * root;
 }
 
 clif psi(clif d, clif x){
-        /* Isometry psi of the form
-         * x |---> .... * (1+x) * (1-x)^-1 * ....
-         *
-         *  -1 |---> 0
-         *   1 |---> inf
-         *   d |---> 1
-         * 
-         * This is needed to calculate the common perpendicular between
-         * S0 = (-1, 1) and S{p-2} = (c, d)
-         */
+	/* Isometry psi of the form
+	 * x |---> .... * (1+x) * (1-x)^-1 * ....
+	 *
+	 *  -1 |---> 0
+	 *   1 |---> inf
+	 *   d |---> 1
+	 * 
+	 * This is needed to calculate the common perpendicular between
+	 * S0 = (-1, 1) and S{p-2} = (c, d)
+	 */
 
-        clif d_prime;
-        clif one(1);
-        clif root;
+	clif d_prime;
+	clif one(1);
+	clif root;
 
-        d_prime = (one + d) / (one - d);
-        //root = glucat::sqrt(one / d_prime);
-        root = my_sqrt(one / d_prime);
+	d_prime = (one + d) / (one - d);
+	//root = glucat::sqrt(one / d_prime);
+	root = my_sqrt(one / d_prime);
 
-        if(CHECK){
-                cout << endl;
-                cout << "### Check ---> "
-                     << root * (one + d) / (one  - d) * root
-                     << " == " << 1 << " ???" << endl;
-                cout << endl;
-        }
+	if(CHECK){
+		cout << endl;
+		cout << "### Check ---> "
+		     << root * (one + d) / (one  - d) * root
+		     << " == " << 1 << " ???" << endl;
+		cout << endl;
+	}
 
-        return root * ((one + x) * (one - x).inv()) * root;
+	return root * ((one + x) * (one - x).inv()) * root;
 }
 
 clif psi_inv(clif d, clif y){
-        /* inverse of x |--> psi(d,x) */
-        clif d_prime;
-        clif one(1);
-        clif root;
-        clif y_temp;
+	/* inverse of x |--> psi(d,x) */
+	clif d_prime;
+	clif one(1);
+	clif root;
+	clif y_temp;
 
-        d_prime = (one + d) / (one - d);
+	d_prime = (one + d) / (one - d);
 	// root isn't necessarily in the same subalgebra... raise issue?
-        //root = glucat::sqrt(d_prime);
-        root = my_sqrt(d_prime);
+	//root = glucat::sqrt(d_prime);
+	root = my_sqrt(d_prime);
 
-        y_temp = root*y*root;
+	y_temp = root*y*root;
 
-        return - (one + y_temp).inv() * (one - y_temp);
+	return - (one + y_temp).inv() * (one - y_temp);
 }
 
 Geod get_last(Geod g){
 	/* get the common perpendicular between (-1, 1) and g = (c, d) */
-        clif temp, img_c;
-        img_c = psi(g.end, g.start);
-        temp = my_sqrt(img_c);
+	clif temp, img_c;
+	img_c = psi(g.end, g.start);
+	temp = my_sqrt(img_c);
 
 	if (CHECK) {
 		cout << endl << "check crossratio:" << endl
@@ -111,14 +111,14 @@ Polygon::Polygon(vector<clif> s){
 	n_sides = s.size() + 3;
 	sides.reserve(n_sides);
 
-        /* starting geodesics */
+	/* starting geodesics */
 	sides.push_back(Geod(-1,1));
 	sides.push_back(Geod(0,0)); 
 
-        /* first calculated geodesic */
+	/* first calculated geodesic */
 	sides.push_back(Geod(-s[0], s[0]));
 
-        /* second calculated geodesic */
+	/* second calculated geodesic */
 	clif t_start, t_end; // temporary intermediate values
 	for (int i = 1; i < s.size(); i++){
 		t_start = -s[i];
@@ -130,7 +130,7 @@ Polygon::Polygon(vector<clif> s){
 		sides.push_back(Geod(t_start, t_end));
 	}
 
-        /* now S4 is the common perpendicular to S0 and S3 */
+	/* now S4 is the common perpendicular to S0 and S3 */
 	sides.push_back(get_last(sides.back()));
 
 	cross_ratios = get_cross_ratios();

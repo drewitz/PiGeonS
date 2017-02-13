@@ -5,5 +5,5 @@
 #include "crossratio.h"
 
 clif crossratio(clif a, clif b, clif c, clif d){
-        return (a-c) * (a-d).inv() * (b-d) * (b-c).inv();
+	return (a-c) * (a-d).inv() * (b-d) * (b-c).inv();
 }

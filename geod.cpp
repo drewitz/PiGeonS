@@ -51,7 +51,7 @@ clif Geod::get_intersection_with_s0() {
 clif Geod::get_intersection(Geod g) {
 	/* solve for intersection of self = (a,b) and g = (c, d)
 	 * i.e. solve for t (or s) in
-	 * 	a + t (b-a)  = c + s (d-c)
+	 *      a + t (b-a)  = c + s (d-c)
 	 *
 	 * i.e. solve the SLE
 	 * [  |    |  ] [ t ]   [  |  ]

@@ -6,8 +6,8 @@ using namespace std;
 
 int main(){
 	cout << "########## Calculate a Pentagon ##########" << endl
-		  << "not very elaborately..." << endl
-	          << endl;
+	     << "not very elaborately..." << endl
+	     << endl;
 
 	clif q1("1+{-1}");
 	clif q2("1+{-2}");
@@ -23,7 +23,7 @@ int main(){
 	Polygon p(s);
         
 
-        cout << "geodesics of the pentagon:" << endl << p;
+	cout << "geodesics of the pentagon:" << endl << p;
 
 	cout << endl;
 	p.check_intersections();

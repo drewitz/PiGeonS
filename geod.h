@@ -20,7 +20,7 @@ class Geod{
 	/* describes a geodesic in upper half space
 	 * takes start and end as points in the boundary
 	 * if start == end, it is of the form (a, infty)
-	 * [so far take this as the default direction	           ]
+	 * [so far take this as the default direction              ]
 	 * [an additional mechanism could be implemented to make   ]
 	 * [the opposite direction possible. e.g.:                 ]
 	 * [self.orientation = +/- 1                               ]
