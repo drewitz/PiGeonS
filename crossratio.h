@@ -8,15 +8,7 @@
 #ifndef CROSSRATIO_H_INCLUDED
 #define CROSSRATIO_H_INCLUDED
 
-#include "glucat/glucat.h"
-/* need the tuning.h file before glucat_imp.h
- * 
- * compare README file distributed with glucat
- * */
-#include "tuning.h"
-#include "glucat/glucat_imp.h"
-
-typedef glucat::matrix_multi<double> clif;
+#include "clif.h"
 
 clif crossratio(clif a, clif b, clif c, clif d);
 
