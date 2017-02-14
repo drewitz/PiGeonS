@@ -8,8 +8,8 @@
 #ifndef CROSSRATIO_H_INCLUDED
 #define CROSSRATIO_H_INCLUDED
 
-#include "clif.h"
+#include "cpctclif.h"
 
-clif crossratio(clif a, clif b, clif c, clif d);
+clif crossratio(CpctClif a, CpctClif b, CpctClif c, CpctClif d);
 
 #endif // CROSSRATIO_H_INCLUDED

@@ -168,10 +168,10 @@ vector<clif> Polygon::get_cross_ratios(){
 	/* TODO also check formula here... */
 	// TODO take care of infinity...
 	qs.push_back((clif(1) - sides.back().end)/(-clif(1) - sides.back().end));
-	qs.push_back(sides[2].end);
-	qs.push_back((sides[2].end - sides[3].end).inv() * (sides[2].start - sides[3].end));
+	//qs.push_back(sides[2].end);
+	//qs.push_back((sides[2].end - sides[3].end).inv() * (sides[2].start - sides[3].end));
 	
-	for (int i = 3; i < n_sides - 1; i++) {
+	for (int i = 1; i < n_sides - 1; i++) {
 		qs.push_back(sides[i].double_bridge_cross_ratio(sides[i-1], sides[i+1]));
 	}
 

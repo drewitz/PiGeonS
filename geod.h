@@ -5,7 +5,7 @@
 #ifndef GEOD_H_INCLUDED
 #define GEOD_H_INCLUDED
 
-#include "clif.h"
+#include "cpctclif.h"
 
 using namespace std;
 
@@ -18,12 +18,14 @@ class Geod{
 	 * [the opposite direction possible. e.g.:                 ]
 	 * [self.orientation = +/- 1                               ]
 	 * TODO you should really implement the infty properly...
+	 *
+	 * EDIT: trying to use specific class now...
 	 */
 	public:
-		clif start;
-		clif end;
+		CpctClif start;
+		CpctClif end;
 		Geod(); // needed to create array of geodesics
-		Geod(clif a, clif b);
+		Geod(CpctClif a, CpctClif b);
 		bool check_one();
 		clif get_intersection_with_s0();
 		clif get_intersection(Geod g);

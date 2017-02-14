@@ -16,13 +16,19 @@ bool is_small(double x){
 
 Geod::Geod(){}
 
-Geod::Geod(clif a, clif b){
+Geod::Geod(CpctClif a, CpctClif b){
 	start = a;
 	end = b;
 }
 
 clif Geod::get_intersection_with_s0() {
 	/* so far only intersection with -1,1 */
+	if (start.is_inf or end.is_inf){
+		// TODO check whether there is an intersection
+		cout << "NEEDS TO BE PROPERLY IMPLEMENTED!!!" << endl
+		     << "IT'S PROBABLY 0" << endl << endl;
+		return clif(0);
+	}
 	clif direction;
 	direction = end - start;
 	int i;
@@ -58,6 +64,7 @@ clif Geod::get_intersection(Geod g) {
 	 * [ b-a  c-d ] [   ] = [ c-a ]
 	 * [  |    |  ] [ s ]   [  |  ]
 	 */
+	// TODO check for infinity...
 	clif m1, m2, v;
 	m1 = end - start;
 	m2 = g.start - g.end;
@@ -122,11 +129,7 @@ bool Geod::check_one() {
 }
 
 ostream& operator<<(ostream& os, const Geod& g){
-	if(g.start == g.end){
-		os << g.start << " -- infty";
-	} else {
-		os << g.start << " -- " << g.end;
-	}
+	os << g.start << " -- " << g.end;
 	return os;
 }
 
