@@ -5,14 +5,15 @@
 using namespace std;
 
 int main(){
-	cout << "########## Calculate a Pentagon ##########" << endl
+	cout << "########## Calculate a Polygon ##########" << endl
 	     << "not very elaborately..." << endl
 	     << endl;
 
 	// initialise parameters
 	vector<clif> s {
-		clif("2{-1}"),
-		clif("2{-2}")
+		clif("1+2{-1}"),
+		clif("1+2{-2}"),
+		clif("1+2{-3}")
 	};
 
 	// print parameters

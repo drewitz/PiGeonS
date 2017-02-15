@@ -4,7 +4,7 @@ CXXFLAGS = -I/home/drewitzs/install/include
 
 OBJECT_FILES = geod.o crossratio.o polygon.o main.o cpctclif.o
 
-glugon: geod.o polygon.o crossratio.o main.o 
+glugon: $(OBJECT_FILES)
 	$(CXX) -o glugon $(OBJECT_FILES) $(LDFLAGS)
 
 $(OBJECT_FILES): clif.h

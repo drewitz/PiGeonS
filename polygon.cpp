@@ -113,7 +113,7 @@ Polygon::Polygon(vector<clif> s){
 
 	/* starting geodesics */
 	sides.push_back(Geod(-1,1));
-	sides.push_back(Geod(0,0)); 
+	sides.push_back(Geod(0,CpctClif(true))); 
 
 	/* first calculated geodesic */
 	sides.push_back(Geod(-s[0], s[0]));
@@ -167,7 +167,7 @@ vector<clif> Polygon::get_cross_ratios(){
 
 	/* TODO also check formula here... */
 	// TODO take care of infinity...
-	qs.push_back((clif(1) - sides.back().end)/(-clif(1) - sides.back().end));
+	qs.push_back((clif(1) - clif(sides.back().end))/(-clif(1) - clif(sides.back().end)));
 	//qs.push_back(sides[2].end);
 	//qs.push_back((sides[2].end - sides[3].end).inv() * (sides[2].start - sides[3].end));
 	

@@ -30,7 +30,7 @@ clif Geod::get_intersection_with_s0() {
 		return clif(0);
 	}
 	clif direction;
-	direction = end - start;
+	direction = clif(end) - clif(start);
 	int i;
 	if(direction[-1] != 0){
 		i = -1;
@@ -50,7 +50,7 @@ clif Geod::get_intersection_with_s0() {
 	s = -start[i]/b;
 
 	clif intersection;
-	intersection = start + direction*clif(s);
+	intersection = clif(start) + direction*clif(s);
 	return intersection;
 }
 
@@ -65,10 +65,15 @@ clif Geod::get_intersection(Geod g) {
 	 * [  |    |  ] [ s ]   [  |  ]
 	 */
 	// TODO check for infinity...
+	clif ga(g.start);
+	clif gb(g.end);
+	clif startclif(start);
+	clif endclif(end);
+
 	clif m1, m2, v;
-	m1 = end - start;
-	m2 = g.start - g.end;
-	v  = g.start - start;
+	m1 = endclif - startclif;
+	m2 = ga - gb;
+	v  = ga - startclif;
 	/* so far only in 2 dimensions? */
 	/* get 2x2 non-singular submatrix to be solved */
 	bool found;
@@ -103,7 +108,7 @@ clif Geod::get_intersection(Geod g) {
 	double t;
 	t = (d * v[i] - b * v[j])/(a*d-b*c);
 
-	return start + t*(end - start);
+	return startclif + t*(endclif - startclif);
 }
 
 bool Geod::check_one() {

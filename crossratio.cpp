@@ -4,18 +4,23 @@
 
 #include "crossratio.h"
 
-clif crossratio(clif a, clif b, clif c, clif d){
+clif crossratio(CpctClif a, CpctClif b, CpctClif c, CpctClif d){
+	clif aclif(a);
+	clif bclif(b);
+	clif cclif(c);
+	clif dclif(d);
+
 	if (a.is_inf){
-		return (b-d) * (b-c).inv();
+		return (bclif-dclif) * (bclif-cclif).inv();
 	}
 	if (b.is_inf){
-		return (a-c) * (a-d).inv();
+		return (aclif-cclif) * (aclif-dclif).inv();
 	}
 	if (c.is_inf){
-		return (a-d).inv() * (b-d);
+		return (aclif-dclif).inv() * (bclif-dclif);
 	}
 	if (d.is_inf){
-		return (a-c) * (b-c).inv();
+		return (aclif-cclif) * (bclif-cclif).inv();
 	}
-	return (a-c) * (a-d).inv() * (b-d) * (b-c).inv();
+	return (aclif-cclif) * (aclif-dclif).inv() * (bclif-dclif) * (bclif-cclif).inv();
 }

@@ -18,6 +18,6 @@
 // number of generators
 #define GENERATORS 4
 
-typedef glucat::matrix_multi<double,-GENERATORS,4> clif;
+typedef glucat::framed_multi<double,-GENERATORS,4> clif;
 
 #endif // CLIF_H_INCLUDED
