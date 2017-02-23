@@ -131,6 +131,7 @@ Polygon::Polygon(vector<clif> s){
 	}
 
 	/* now S4 is the common perpendicular to S0 and S3 */
+	// TODO check cross ratio non-negative
 	sides.push_back(get_last(sides.back()));
 
 	cross_ratios = get_cross_ratios();

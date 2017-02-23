@@ -12,6 +12,7 @@ $(OBJECT_FILES): clif.h
 clean:
 	rm -fv glugon
 	rm -fv *.o
+	rm -fv *~
 
 test: test.o cpctclif.o
 	$(CXX) -o test test.o cpctclif.o $(LDFLAGS)

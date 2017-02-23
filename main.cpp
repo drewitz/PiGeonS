@@ -4,18 +4,19 @@
 
 using namespace std;
 
-int main(){
-	cout << "########## Calculate a Polygon ##########" << endl
-	     << "not very elaborately..." << endl
-	     << endl;
+int main(int argc, char* argv[]){
+	// invoke programme as
+	// ./glugon q1 q2 ... q_p
 
 	// initialise parameters
-	vector<clif> s {
-		clif("1+2{-1}"),
-		clif("1+2{-2}"),
-		clif("1+2{-3}")
-	};
+	vector<clif> s;
+	s.reserve(argc-1);
+	for(int i = 1; i < argc; i++){
+		s.push_back(clif(argv[i]));
+	}
 
+	cout << "########## Calculate a " << s.size() + 3 << "-gon ##########"
+	     << endl;
 	// print parameters
 	cout << "Using the parameters:" << endl;
 	int i = 0;

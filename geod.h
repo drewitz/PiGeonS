@@ -24,6 +24,7 @@ class Geod{
 	public:
 		CpctClif start;
 		CpctClif end;
+
 		Geod(); // needed to create array of geodesics
 		Geod(CpctClif a, CpctClif b);
 		bool check_one();

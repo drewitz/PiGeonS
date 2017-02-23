@@ -78,6 +78,7 @@ clif Geod::get_intersection(Geod g) {
 	/* get 2x2 non-singular submatrix to be solved */
 	bool found;
 	found = false;
+	// TODO dimMax and GENERATORS (defined somewhere...)
 	int dimMax = -2;
 	int i = 0;
 	int j = -1;
