@@ -187,3 +187,25 @@ void Polygon::print_cross_ratios(){
 		i++;
 	}
 }
+
+void Polygon::print_abs_cross_ratios(){
+	int i = 0;
+	vector<double> abses;
+	abses.reserve(n_sides);
+
+	for (clif q : cross_ratios) {
+		cout << "|q" << i << "| = " << abs(q) << endl;
+		if(abs(q) < 1){
+			abses.push_back(i);
+		}
+		i++;
+	}
+	if(abses.size() > 0){
+		cout << "The following sides need attention regarding orientation:"
+		     << endl;
+		for (double abi : abses) {
+			cout << "S_" << abi << ", ";
+		}
+		cout << endl;
+	}
+}

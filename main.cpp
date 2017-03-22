@@ -37,4 +37,7 @@ int main(int argc, char* argv[]){
 	cout << endl << endl;
 	p.print_cross_ratios();
 	cout << endl;
+
+	p.print_abs_cross_ratios();
+	cout << endl;
 }

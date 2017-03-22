@@ -23,6 +23,7 @@ class Polygon{
 		void check_intersections();
 		vector<clif> get_cross_ratios();
 		void print_cross_ratios();
+		void print_abs_cross_ratios();
 
 		// friends
 		friend clif my_sqrt(clif x);
