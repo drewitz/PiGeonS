@@ -9,7 +9,7 @@
 
 #include "glucat/glucat.h"
 /* need the tuning.h file before glucat_imp.h
- * 
+ *
  * compare README file distributed with glucat
  * */
 #include "tuning.h"

@@ -26,7 +26,8 @@ clif Geod::get_intersection_with_s0() {
 	if (start.is_inf or end.is_inf){
 		// TODO check whether there is an intersection
 		cout << "NEEDS TO BE PROPERLY IMPLEMENTED!!!" << endl
-		     << "IT'S PROBABLY 0" << endl << endl;
+		     << "Intersection with vertical line" << endl
+		     << "It's probably 0" << endl << endl;
 		return clif(0);
 	}
 	clif direction;
@@ -39,7 +40,8 @@ clif Geod::get_intersection_with_s0() {
 			i = -2;
 		} else {
 			cout << endl
-			     << "Noe geht nicht" << endl;
+			     << "Cannot calculate intersection with S0"
+			     << endl;
 		}
 	}
 
@@ -78,8 +80,8 @@ clif Geod::get_intersection(Geod g) {
 	/* get 2x2 non-singular submatrix to be solved */
 	bool found;
 	found = false;
-	// TODO dimMax and GENERATORS (defined somewhere...)
-	int dimMax = -2;
+	// TODO check why "+1" needed...
+	int dimMax = -GENERATORS+1;
 	int i = 0;
 	int j = -1;
 	double a,b,c,d;
