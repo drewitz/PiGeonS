@@ -123,7 +123,7 @@ Polygon::Polygon(vector<clif> s){
 	for (int i = 1; i < s.size(); i++){
 		t_start = -s[i];
 		t_end = s[i];
-		for (int j = 0; j < i; j++){
+		for (int j = i-1; j >= 0; j--){
 			t_start = phi(s[j], t_start);
 			t_end = phi(s[j], t_end);
 		}
@@ -143,7 +143,6 @@ ostream& operator<<(ostream& os, const Polygon& p){
 		i++;
 		os << " S" << i << " = " << g << endl;
 	}
-	os << "  --   orientation of S" << i << " might be inverted" << endl;
 	return os;
 }
 
