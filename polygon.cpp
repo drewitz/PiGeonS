@@ -199,12 +199,12 @@ void Polygon::print_abs_cross_ratios(){
 		}
 		i++;
 	}
-	if(abses.size() > 0){
-		cout << "The following sides need attention regarding orientation:"
-		     << endl;
-		for (double abi : abses) {
-			cout << "S_" << abi << ", ";
-		}
-		cout << endl;
-	}
+	//if(abses.size() > 0){
+	//	cout << "The following sides need attention regarding orientation:"
+	//	     << endl;
+	//	for (double abi : abses) {
+	//		cout << "S_" << abi << ", ";
+	//	}
+	//	cout << endl;
+	//}
 }

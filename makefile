@@ -1,6 +1,6 @@
 .PHONY: clean
-LDFLAGS = -L/home/drewitzs/install/include
-CXXFLAGS = -I/home/drewitzs/install/include
+LDFLAGS = -L$(HOME)/installs/include
+CXXFLAGS = -I$(HOME)/installs/include
 
 OBJECT_FILES = geod.o crossratio.o polygon.o main.o cpctclif.o
 
